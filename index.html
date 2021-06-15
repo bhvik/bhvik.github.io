@@ -206,7 +206,7 @@
    
     document.getElementById('timelineDiv').addEventListener('touchmove', function(e) {
         var te = e.changedTouches[0].clientY;
-        e.preventDefault()
+        //e.preventDefault()
     },{passive:false});
     document.body.scrollIntoView({behavior:"smooth"})
     createTimeline()
