@@ -129,12 +129,11 @@
                     `<div class="timeline-block timeline-block-right" id="`+block.id+`">
                         <div class="marker"></div>
                         <div class="timeline-content-right">
-                        
+                            <button onclick="prev()" class="btn-darks"><i class="ri-arrow-up-circle-fill"></i></button>
+                            <button onclick="next()" class="btn-darks"><i class="ri-arrow-down-circle-fill"></i></button>
                             <h3>`+block.heading+`</h3>
                             <img src="./images/`+block.body+`" class="img-fluid img-border"></p>
                             <h5 class="text-white">`+block.story+`</h5>
-                            <button onclick="prev()" class="btn-darks"><i class="ri-arrow-up-circle-fill"></i></button>
-                            <button onclick="next()" class="btn-darks"><i class="ri-arrow-down-circle-fill"></i></button>
                         </div>
                     </div>
                     ` 
@@ -144,6 +143,8 @@
                 `<div class="timeline-block timeline-block-left" id="`+block.id+`">
                     <div class="marker"></div>
                     <div class="timeline-content-left">
+                        <button onclick="prev()" class="btn-darks"><i class="ri-arrow-up-circle-fill"></i></button>
+                        <button onclick="next()" class="btn-darks"><i class="ri-arrow-down-circle-fill"></i></button>
                         <h3>`+block.heading+`</h3>
                         <img src="./images/`+block.body+`" class="img-fluid img-border"></p>
                         <h5 class="text-white">`+block.story+`</h5>
@@ -160,11 +161,11 @@
                     `<div class="timeline-block timeline-block-right" id="`+block.id+`">
                         <div class="marker"></div>
                         <div class="timeline-content-right">
-                        
+                            <button onclick="prev()" class="btn-darks"><i class="ri-arrow-up-circle-fill"></i></button>
                             <h3>`+block.heading+`</h3>
                             <img src="./images/`+block.body+`" class="img-fluid img-border"></p>
                             <h5 class="text-white">`+block.story+`</h5>
-                            <button onclick="prev()" class="btn-darks"><i class="ri-arrow-up-circle-fill"></i></button>
+                            
                         </div>
                     </div>
                     ` 
@@ -174,10 +175,10 @@
                 `<div class="timeline-block timeline-block-left" id="`+block.id+`">
                     <div class="marker"></div>
                     <div class="timeline-content-left">
+                        <button onclick="prev()" class="btn-darks"><i class="ri-arrow-up-circle-fill"></i></button>
                         <h3>`+block.heading+`</h3>
                         <img src="./images/`+block.body+`" class="img-fluid img-border"></p>
                         <h5 class="text-white">`+block.story+`</h5>
-                        <button onclick="prev()" class="btn-darks"><i class="ri-arrow-up-circle-fill"></i></button>
                     </div>
                 </div>
                 ` 
@@ -206,7 +207,7 @@
    
     document.getElementById('timelineDiv').addEventListener('touchmove', function(e) {
         var te = e.changedTouches[0].clientY;
-        //e.preventDefault()
+        e.preventDefault()
     },{passive:false});
     document.body.scrollIntoView({behavior:"smooth"})
     createTimeline()
