@@ -12,12 +12,9 @@
 
     <title>Bhavik Raisinghani</title>
 </head>
-<body>
-    <nav class="navbar navbar-dark">
-        <a class="navbar-brand" href="#">Bhavik Raisinghani</a>
-    </nav>
-    <div class="container-fluid">
-        <div class="row">
+<body id="main">
+    <div class="container-fluid" id="mainDiv">
+        <div class="row" id="">
             <div class="col-lg-4 offset-lg-2 p-5">
                 <img src="./images/logoBR.png" class="img-fluid" alt="">
             </div>
@@ -43,6 +40,9 @@
                 </h2>
             </div>
         </div>
+        <div class="text-center">
+            <button onclick="next()" class="btn-darks"><i class="ri-arrow-down-circle-fill"></i></button></button>
+        </div>
         <div class="row bg-elevated">
             <div class="col-lg-12">
                 <div class="container" id="timelineDiv">
@@ -53,67 +53,161 @@
 </body>
 </html>
 <script>
+    const ids =["main","anitaOld","lelePons","lillySingh","jlo","tylerHoechlin"]
+    let downRots = 0
+    let upRots = 0
+    let currentScrollpos=0
+    let currentImg = "main"
+    let prevImg = ""
+    let nextImg = "anitaOld"
+    const scrollSmooth = (event) =>{
+        event.preventDefault()
+        if(event.deltaY<0 && currentImg!="main"){
+            upRots+=1
+            if(upRots==5){
+                upRots=0
+                document.getElementById(prevImg).scrollIntoView({ behavior: "smooth" })
+                nextImg = currentImg
+                currentImg = prevImg
+                prevImg = ids[ids.indexOf(prevImg)-1]
+            }
+        }
+        if(event.deltaY>0 && currentImg!=ids[ids.length-1]){
+            downRots+=1
+            if(downRots==5){
+                downRots=0
+                document.getElementById(nextImg).scrollIntoView({ behavior: "smooth" })
+                prevImg = currentImg
+                currentImg = nextImg
+                nextImg = ids[ids.indexOf(nextImg)+1]
+            }
+            
+        }
+    }
+    document.getElementById("mainDiv").addEventListener("wheel", scrollSmooth);
+    
     const createTimeline = () =>{
         let arr=[
             {
                 heading:"The Beginnings",
                 story:"I started out by first sketching my favourite music artist <span class='text-bhavik'>Anita</span>",
-                body:"anitaOld.png"
+                body:"anitaOld.png",
+                id:"anitaOld"
             },
             {
                 heading:"The Learning Phase",
                 story:"I used reference images to get an idea of the directional poses, and tried to draw the famous youtuber <span class='text-bhavik'>Lele Pons</span>",
-                body:"lelePons.png"
+                body:"lelePons.png",
+                id:"lelePons"
             },
             {
                 heading:"The First Competion",
                 story:"To try out my newly learned skills, I took part in my College's annual event and drew Lily Singh to symbolize powerful women. I got nominated for <span class='text-bhavik'>Student of The Year</span>",
-                body:"lillySingh.png"
+                body:"lillySingh.png",
+                id:"lillySingh"
             },
             {
                 heading:"The Learning Phase Continues",
                 story:"Then I experimented with face structure and effect of lighting by drawing the gorgeous singer <span class='text-bhavik'>JLO</span>",
-                body:"jlo.png"
+                body:"jlo.png",
+                id:"jlo"
             },
             {
                 heading:"The Learning Phase Continues",
                 story:"After somewhat perfecting female faces, I shifted towards male ones and conceptulized the handsome <span class='text-bhavik'>Tyler Hoechlin</span>",
-                body:"tylerHoechlin.jpeg"
+                body:"tylerHoechlin.jpeg",
+                id:"tylerHoechlin"
             }
         ]
         
         arr.forEach((block,i)=>{
             //timelineDiv
             let timeLineBlock=``
-            if(i%2==0){
-                timeLineBlock =            
-                `<div class="timeline-block timeline-block-right">
-                    <div class="marker"></div>
-                    <div class="timeline-content-right">
-                       
-                        <h3>`+block.heading+`</h3>
-                        <img src="./images/`+block.body+`" class="img-fluid img-border"></p>
-                        <h5 class="text-white">`+block.story+`</h5>
-                       
+            if(i<arr.length-1){
+                if(i%2==0){
+                    timeLineBlock =            
+                    `<div class="timeline-block timeline-block-right" id="`+block.id+`">
+                        <div class="marker"></div>
+                        <div class="timeline-content-right">
+                        
+                            <h3>`+block.heading+`</h3>
+                            <img src="./images/`+block.body+`" class="img-fluid img-border"></p>
+                            <h5 class="text-white">`+block.story+`</h5>
+                            <button onclick="prev()" class="btn-darks"><i class="ri-arrow-up-circle-fill"></i></button>
+                            <button onclick="next()" class="btn-darks"><i class="ri-arrow-down-circle-fill"></i></button>
+                        </div>
                     </div>
-                </div>
-                ` 
-            }
-            else{
+                    ` 
+                }
+                else{
                 timeLineBlock =            
-                `<div class="timeline-block timeline-block-left">
+                `<div class="timeline-block timeline-block-left" id="`+block.id+`">
                     <div class="marker"></div>
                     <div class="timeline-content-left">
                         <h3>`+block.heading+`</h3>
                         <img src="./images/`+block.body+`" class="img-fluid img-border"></p>
                         <h5 class="text-white">`+block.story+`</h5>
+                        <button onclick="prev()" class="btn-darks"><i class="ri-arrow-up-circle-fill"></i></button>
+                        <button onclick="next()" class="btn-darks"><i class="ri-arrow-down-circle-fill"></i></button>
                     </div>
                 </div>
                 ` 
+            }
+            }
+            else{
+                if(i%2==0){
+                    timeLineBlock =            
+                    `<div class="timeline-block timeline-block-right" id="`+block.id+`">
+                        <div class="marker"></div>
+                        <div class="timeline-content-right">
+                        
+                            <h3>`+block.heading+`</h3>
+                            <img src="./images/`+block.body+`" class="img-fluid img-border"></p>
+                            <h5 class="text-white">`+block.story+`</h5>
+                            <button onclick="prev()" class="btn-darks"><i class="ri-arrow-up-circle-fill"></i></button>
+                        </div>
+                    </div>
+                    ` 
+                }
+                else{
+                timeLineBlock =            
+                `<div class="timeline-block timeline-block-left" id="`+block.id+`">
+                    <div class="marker"></div>
+                    <div class="timeline-content-left">
+                        <h3>`+block.heading+`</h3>
+                        <img src="./images/`+block.body+`" class="img-fluid img-border"></p>
+                        <h5 class="text-white">`+block.story+`</h5>
+                        <button onclick="prev()" class="btn-darks"><i class="ri-arrow-up-circle-fill"></i></button>
+                    </div>
+                </div>
+                ` 
+            }
             }
             $('#timelineDiv').append(timeLineBlock)
         })
 
     }
+    const next = () =>{
+        if(currentImg!=ids[ids.length-1]){
+            document.getElementById(nextImg).scrollIntoView({ behavior: "smooth" })
+            prevImg = currentImg
+            currentImg = nextImg
+            nextImg = ids[ids.indexOf(nextImg)+1]
+        }
+    }
+    const prev = () =>{
+        if(currentImg!=ids[0]){
+            document.getElementById(prevImg).scrollIntoView({ behavior: "smooth" })
+            nextImg = currentImg
+            currentImg = prevImg
+            prevImg = ids[ids.indexOf(prevImg)-1]
+        }
+    }
+   
+    document.addEventListener('touchmove', function(e) {
+        var te = e.changedTouches[0].clientY;
+        e.preventDefault()
+    },{passive:false});
+    document.body.scrollIntoView({behavior:"smooth"})
     createTimeline()
 </script>

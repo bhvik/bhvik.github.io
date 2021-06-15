@@ -37,6 +37,7 @@ body{
     margin: 50px auto;
     position: relative;
     overflow: hidden;
+    scroll-behavior: smooth;
  }
  
  .container:before {
@@ -121,7 +122,9 @@ body{
     word-spacing: 1px;
     color: #888;
  }
- 
+ .btn-darks{
+    display: none;
+ }
  
  @media screen and (max-width: 768px) {
     .container:before {
@@ -158,6 +161,17 @@ body{
         margin-left:25px;
         border-radius: 10px;
     }
+    .btn-darks{
+         background-color: transparent;
+         color:#AC4FC6;
+         border: 0;
+         border-radius: 10px;
+         display: inline-block;
+         outline: 0;
+         margin-top: 10px;
+         margin-bottom: 10px;
+         font-size: 30px;
+   }
  }
  .img-border{
      border-radius: 10px;
