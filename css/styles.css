@@ -176,3 +176,23 @@ body{
  .img-border{
      border-radius: 10px;
  }
+
+ /* width */
+::-webkit-scrollbar {
+   width: 5px;
+ }
+ 
+ /* Track */
+ ::-webkit-scrollbar-track {
+   background: #272727;
+ }
+ 
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+   background: #AC4FC6;
+ }
+ 
+ /* Handle on hover */
+ ::-webkit-scrollbar-thumb:hover {
+   background: #AC4FC6;
+ }
