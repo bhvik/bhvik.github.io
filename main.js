@@ -50,6 +50,20 @@ const additonalContent = {
         },
 
     ],
+    Paintings: [
+
+        {
+            img: "woman.jpg",
+            title: "Woman",
+            class: "col-lg-6 col-md-6"
+        },
+        {
+            img: "flowers.jpg",
+            title: "Flowers",
+            class: "col-lg-6 col-md-6"
+        },
+
+    ],
     Portraits: [{
             img: "bellaHadid.jpeg",
             title: "Bella Hadid"
@@ -66,7 +80,8 @@ const additonalContent = {
             img: "stephenAmell.jpg",
             title: "Stephen Amell"
         }
-    ]
+    ],
+
 
 }
 
@@ -117,8 +132,12 @@ const createAdditonalContent = () => {
                     </div>`
         $('#additonalContent').append(row)
         additonalContent[prop].forEach((element) => {
+            let clss = "col-lg-3 col-md-6"
+            if (element.class) {
+                clss = element.class
+            }
             let col = `
-                    <div class="col-lg-3 col-md-6 text-center mb-3">
+                    <div class="` + clss + ` text-center mb-3">
                     <img src="./images/` + element.img + `" class="img-fluid img-border"></p>
                     <h3 class="text-white">` + element.title + `</h3>
                     </div>
