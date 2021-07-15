@@ -54,7 +54,7 @@ const additonalContent = {
 
         {
             img: "woman.jpg",
-            title: "Woman",
+            title: "Elegance",
             class: "col-lg-6 col-md-6"
         },
         {
