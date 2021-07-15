@@ -1,6 +1,6 @@
 const arr = [{
         heading: "The Beginnings",
-        story: "I started out by first sketching my favourite music artist <span class='text-bhavik'>Anita</span>",
+        story: "I started out by first sketching my favourite music artist <span class='text-bhavik'>Anitta</span>",
         body: "anitaOld.png",
         id: "anitaOld"
     },
@@ -74,7 +74,7 @@ const additonalContent = {
         },
         {
             img: "scarletJohansen.jpeg",
-            title: "Scarlet Johansen"
+            title: "Scarlett Johanssonn"
         },
         {
             img: "stephenAmell.jpg",
